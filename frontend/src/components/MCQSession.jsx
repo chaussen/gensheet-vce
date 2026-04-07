@@ -79,7 +79,7 @@ export default function MCQSession({ session, onDone, onHome }) {
         {/* Question card */}
         <div className="border border-slate-200 rounded-xl p-6 mb-6">
           <div className="text-slate-800 text-base leading-relaxed mb-6">
-            <LatexContent content={`$${q.question_latex}$`} />
+            <LatexContent content={q.question_latex} />
           </div>
 
           <div className="flex flex-col gap-2">
@@ -100,7 +100,7 @@ export default function MCQSession({ session, onDone, onHome }) {
                 }`}>
                   {letter}
                 </span>
-                <LatexContent content={`$${q.options[letter]}$`} className="flex-1" />
+                <LatexContent content={q.options[letter]} className="flex-1" />
               </button>
             ))}
           </div>

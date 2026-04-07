@@ -1,12 +1,6 @@
 import { useState } from 'react'
 import LatexContent from './LatexContent.jsx'
 
-function wrapLatex(text) {
-  // Wrap inline content so KaTeX auto-render picks it up
-  // The content is already LaTeX, wrap in span so the ref works
-  return text
-}
-
 export default function ExtendedSession({ session, onDone, onHome }) {
   // Flatten all parts from all questions into a single list
   const allParts = session.questions.flatMap(q =>
@@ -115,25 +109,15 @@ export default function ExtendedSession({ session, onDone, onHome }) {
 
           {/* Question */}
           <div className="text-slate-800 text-base mb-6 leading-relaxed">
-            <LatexContent content={`$${part.question_latex}$`} />
-          </div>
-
-          {/* Strategy hint */}
-          <div className="bg-slate-50 rounded-lg p-4 mb-3">
-            <p className="text-sm text-slate-600">
-              <span className="mr-1">📌</span>
-              <span className="font-medium">Strategy hint:</span>{' '}
-              {part.strategy_hint}
-            </p>
+            <LatexContent content={part.question_latex} />
           </div>
 
           {/* Formula reference */}
           <div className="bg-slate-50 rounded-lg p-4 mb-6">
-            <p className="text-sm text-slate-600">
-              <span className="mr-1">📐</span>
-              <span className="font-medium">Formula:</span>{' '}
-              <LatexContent content={part.formula_reference} className="inline" />
+            <p className="text-xs text-slate-400 font-medium mb-2">
+              <span className="mr-1">📐</span>Formula
             </p>
+            <LatexContent content={part.formula_reference} />
           </div>
 
           {/* Show worked solution */}
@@ -158,7 +142,7 @@ export default function ExtendedSession({ session, onDone, onHome }) {
               <div className="border-t border-slate-200 pt-4">
                 <p className="text-xs text-slate-400 uppercase tracking-wider mb-3">Worked solution</p>
                 <div className="text-slate-700 text-sm leading-relaxed">
-                  <LatexContent content={`$${solutionLatex}$`} />
+                  <LatexContent content={solutionLatex} />
                 </div>
               </div>
             </div>

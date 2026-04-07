@@ -4,26 +4,21 @@ export default function LatexContent({ content, className = '' }) {
   const ref = useRef(null)
 
   useEffect(() => {
-    if (!ref.current) return
-    const timeout = setTimeout(() => {
-      if (window.renderMathInElement) {
-        window.renderMathInElement(ref.current, {
-          delimiters: [
-            { left: '$$', right: '$$', display: true },
-            { left: '$', right: '$', display: false },
-          ],
-          throwOnError: false,
-        })
-      }
-    }, 50)
-    return () => clearTimeout(timeout)
+    if (!ref.current || !content) return
+    // Set as plain text so HTML special chars in LaTeX (< > &) are not interpreted as markup
+    ref.current.textContent = content
+    if (window.renderMathInElement) {
+      window.renderMathInElement(ref.current, {
+        delimiters: [
+          { left: '$$', right: '$$', display: true },
+          { left: '$', right: '$', display: false },
+          { left: '\\[', right: '\\]', display: true },
+          { left: '\\(', right: '\\)', display: false },
+        ],
+        throwOnError: false,
+      })
+    }
   }, [content])
 
-  return (
-    <div
-      ref={ref}
-      className={className}
-      dangerouslySetInnerHTML={{ __html: content }}
-    />
-  )
+  return <div ref={ref} className={className} />
 }
