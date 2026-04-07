@@ -1,0 +1,590 @@
+{
+  "subject": "Specialist Mathematics",
+  "units": "3 and 4",
+  "study_design_year": "2023–2027",
+  "accreditation_start": "January 2023",
+  "source": "VCE Mathematics Study Design 2023 (VCAA)",
+  "note": "This file is the curriculum library for GenSheet VCE question generation. Each topic entry includes the VCAA content descriptors, key formulas, difficulty tiers, question style notes drawn from past exam patterns, and hint guidelines for the UI.",
+
+  "areas_of_study": [
+
+    {
+      "code": "SM_AOS1",
+      "name": "Discrete Mathematics — Logic and Proof",
+      "unit": "3",
+      "exam_relevance": "Exam 1 only (technology-free). Appears every year. 3–4 marks.",
+      "topics": [
+        {
+          "code": "SM_AOS1_T1",
+          "name": "Propositional logic",
+          "vcaa_content": [
+            "Implications, equivalences, if and only if statements (necessary and sufficient conditions)",
+            "Contrapositive, converse and inverse of an implication",
+            "Conjunctions, disjunctions and negations",
+            "Counter-examples to disprove statements"
+          ],
+          "key_formulas": [
+            "Contrapositive of 'P → Q' is '¬Q → ¬P'",
+            "Converse of 'P → Q' is 'Q → P'",
+            "Inverse of 'P → Q' is '¬P → ¬Q'",
+            "De Morgan's laws: ¬(P ∧ Q) ≡ ¬P ∨ ¬Q"
+          ],
+          "difficulty_tiers": {
+            "standard": "Identify the contrapositive/converse/inverse of a given statement. Find a counter-example to a false universal claim.",
+            "hard": "Determine whether two logical statements are logically equivalent. Construct a valid argument using propositional logic."
+          },
+          "exam_question_style": "MCQ in Exam 2 Section A. Short answer in Exam 1 (1–2 marks). Often uses concrete scenarios (animals, integers) not abstract P/Q notation.",
+          "hint_for_ui": "The contrapositive (¬Q → ¬P) is always logically equivalent to the original implication. The converse (Q → P) is NOT necessarily equivalent.",
+          "question_generation_notes": "For MCQ: present a concrete statement ('If I have a tiger, I have a cat') and ask which option is the contrapositive. Wrong options should be the converse, inverse, or a distractor using negation incorrectly."
+        },
+        {
+          "code": "SM_AOS1_T2",
+          "name": "Direct proof",
+          "vcaa_content": [
+            "Direct proof using a sequence of direct implications",
+            "Proof by cases",
+            "Proof by contradiction",
+            "Proof by contrapositive"
+          ],
+          "key_formulas": [
+            "Odd integer: x = 2k + 1 for k ∈ ℤ",
+            "Even integer: x = 2k for k ∈ ℤ",
+            "Sum/product parity rules"
+          ],
+          "difficulty_tiers": {
+            "standard": "Prove a simple divisibility or parity result using x = 2k+1 substitution.",
+            "hard": "Proof by contradiction (e.g. √2 is irrational). Proof by contrapositive involving inequalities."
+          },
+          "exam_question_style": "Exam 1 short answer, 3 marks. Always requires working shown. 'Direct proof' is specified in the question.",
+          "hint_for_ui": "For direct proof: start by writing x = 2k+1 (if odd) or x = 2k (if even) where k ∈ ℤ. Substitute into the expression and simplify to show the required result.",
+          "question_generation_notes": "AVOID generating 'show that' versions — replace with 'prove that'. The AI should generate the specific algebraic expression to prove. Common patterns: 2x² − 3x − 7 is even when x is odd; x² − x is always even; product of two odd integers is odd."
+        },
+        {
+          "code": "SM_AOS1_T3",
+          "name": "Mathematical induction",
+          "vcaa_content": [
+            "Proof by mathematical induction",
+            "Induction over: divisibility, summation formulas, inequalities, and statements involving complex numbers, matrices, vectors"
+          ],
+          "key_formulas": [
+            "Induction structure: Base case (n=1) → Inductive step (assume n=k, prove n=k+1)",
+            "Common sum: Σᵢ(i+1)² = (1/6)n(2n²+9n+13)",
+            "Geometric series: Σᵢrⁱ = r(rⁿ−1)/(r−1)"
+          ],
+          "difficulty_tiers": {
+            "standard": "Prove a summation formula by induction. Prove divisibility (e.g. 3ⁿ − 1 is divisible by 2).",
+            "hard": "Prove an inequality by induction. Induction involving matrices or complex numbers."
+          },
+          "exam_question_style": "Exam 1 only. 4 marks. Always a 'prove by mathematical induction' question. Marking requires: explicit base case, inductive hypothesis stated, algebraic manipulation visible, conclusion.",
+          "hint_for_ui": "Mathematical induction has three required parts: (1) Base case — verify the statement for n=1. (2) Inductive step — assume true for n=k, then show it must be true for n=k+1. (3) Conclusion — state the result follows by induction for all n ∈ ℕ.",
+          "question_generation_notes": "Generate the summation formula or divisibility claim, not the proof. Difficulty can be tuned by the complexity of the algebraic simplification in the inductive step."
+        }
+      ]
+    },
+
+    {
+      "code": "SM_AOS2",
+      "name": "Functions, Relations and Graphs",
+      "unit": "3",
+      "exam_relevance": "Exam 1 and Exam 2. Appears every year. 6 marks Exam 1, 10 marks Exam 2 Section B Q1.",
+      "topics": [
+        {
+          "code": "SM_AOS2_T1",
+          "name": "Rational functions",
+          "vcaa_content": [
+            "Rational functions and partial fractions (low degree)",
+            "Asymptotic behaviour: vertical, horizontal, oblique",
+            "Stationary points and points of inflection",
+            "Sketch graphs of rational functions"
+          ],
+          "key_formulas": [
+            "Vertical asymptote: denominator = 0",
+            "Horizontal asymptote: degree(num) < degree(denom) → y=0; equal degrees → y = ratio of leading coefficients",
+            "Oblique asymptote: polynomial long division when degree(num) = degree(denom) + 1",
+            "Stationary point: dy/dx = 0",
+            "Point of inflection: d²y/dx² = 0 (with sign change)"
+          ],
+          "difficulty_tiers": {
+            "standard": "Find vertical asymptotes of y = 3x/(x³+x+2). Find stationary point. Write definite integral for volume of revolution.",
+            "hard": "Family of curves y = 3x/(x³+ax+2) — find a for no stationary points, find a for point of inflection at given x."
+          },
+          "exam_question_style": "Exam 2 Q1 structure (10 marks): sketch + asymptotes + turning point + POI (3 marks) → volume integral (2 marks) → asymptote variant (1 mark) → family of curves with parameter a (4 marks). Coordinates of POI required to 1dp in Exam 2.",
+          "hint_for_ui": "Key steps for rational functions: (1) Find vertical asymptotes by solving denominator = 0. (2) Find horizontal/oblique asymptote by comparing degrees. (3) Differentiate using quotient rule to find stationary points. (4) Second derivative to classify and find inflection points.",
+          "question_generation_notes": "For sub-questions, generate separately: asymptote equations (text answer), stationary point coordinates (numeric), point of inflection (numeric to 1dp), volume integral (LaTeX expression). For Exam 2 Q1 style: use the form y = 3x/(x³ + ax + 2) with a as a parameter. The family-of-curves sub-questions are the most differentiating — generate these for hard difficulty."
+        },
+        {
+          "code": "SM_AOS2_T2",
+          "name": "Quotient functions",
+          "vcaa_content": [
+            "Graphs of simple quotient functions (e.g. y = x/(x²+1), y = √(f(x)/g(x)))",
+            "Asymptotic behaviour and key features"
+          ],
+          "key_formulas": [
+            "Even/odd function tests for symmetry",
+            "Domain restrictions for square root quotients"
+          ],
+          "difficulty_tiers": {
+            "standard": "Find domain, range and asymptotes of a given quotient function.",
+            "hard": "Sketch y = √(arctan(x)/(1+x²)) and find key features (as in 2025 Exam 1 Q6)."
+          },
+          "exam_question_style": "Often appears embedded in a volume of revolution question rather than as a standalone sketch question.",
+          "hint_for_ui": "For quotient functions under a square root, ensure the radicand is non-negative — this determines the domain. Differentiate carefully using the chain rule.",
+          "question_generation_notes": "Best used as the function inside a volume of revolution question rather than as a standalone graphing question."
+        }
+      ]
+    },
+
+    {
+      "code": "SM_AOS3",
+      "name": "Algebra, Number and Structure — Complex Numbers",
+      "unit": "3",
+      "exam_relevance": "Exam 1 and Exam 2. Every year. 4–5 marks Exam 1, 10 marks Exam 2 Section B Q2.",
+      "topics": [
+        {
+          "code": "SM_AOS3_T1",
+          "name": "Complex number operations and polar form",
+          "vcaa_content": [
+            "De Moivre's theorem for integral powers",
+            "Powers and roots of complex numbers in polar form",
+            "n-th roots of unity and other complex numbers",
+            "Factors over ℂ of polynomials",
+            "Fundamental theorem of algebra (informal)",
+            "Conjugate root theorem"
+          ],
+          "key_formulas": [
+            "Polar form: z = r·cis(θ) = r(cos θ + i sin θ)",
+            "Modulus: |z| = √(x² + y²)",
+            "Argument: Arg(z) ∈ (−π, π]",
+            "De Moivre's: zⁿ = rⁿ·cis(nθ)",
+            "n-th roots: zₖ = r^(1/n)·cis((θ + 2kπ)/n), k = 0, 1, ..., n−1",
+            "Conjugate root theorem: if (a+bi) is a root of a real polynomial, then (a−bi) is also a root",
+            "Quadratic factor from conjugate pair: (z−(a+bi))(z−(a−bi)) = z² − 2az + (a²+b²)"
+          ],
+          "difficulty_tiers": {
+            "standard": "Express in polar form. Find roots of z² + 2z + 5 = 0. Factor z⁴ + 6z² + 25 over ℂ.",
+            "hard": "Find all solutions of z⁵ = 1 and plot in Argand plane. Solve z³ + az² + bz − 52 = 0 given one complex root."
+          },
+          "exam_question_style": "Exam 1: factor polynomial, plot solutions on Argand diagram (visual — skip for drill). Exam 2 MCQ: Re(1/(1−z)) given |z|=1. Exam 1 Q8: implicit differentiation of an equation in z.",
+          "hint_for_ui": "For polynomials with real coefficients: complex roots always come in conjugate pairs. Use this to find the quadratic factor: if (a+bi) is a root, the factor is z² − 2az + (a²+b²). Then divide the polynomial by this factor to find remaining roots.",
+          "question_generation_notes": "Best question types for drill: (1) Given one complex root, find all roots of a degree-3 or degree-4 polynomial. (2) Express z in polar form given Cartesian form. (3) Find z satisfying |z − a| = |z − b| (locus question, solvable algebraically). Argand diagram plotting is EXCLUDED from drill — transform to 'state the roots in the form a+bi'."
+        },
+        {
+          "code": "SM_AOS3_T2",
+          "name": "Complex loci",
+          "vcaa_content": [
+            "Regions of an Argand diagram using complex relations",
+            "Loci defined by |z − a| = r (circle)",
+            "Loci defined by |z − a| = |z − b| (perpendicular bisector)",
+            "Loci defined by Arg(z − z₀) = θ (ray)",
+            "Intersection of loci"
+          ],
+          "key_formulas": [
+            "|z − a|² = (x−Re(a))² + (y−Im(a))²",
+            "|z| = r → x² + y² = r² (circle centred at origin)",
+            "zz̄ = |z|² = x² + y²",
+            "Re(z) = x, Im(z) = y",
+            "Perpendicular bisector equidistant from two points"
+          ],
+          "difficulty_tiers": {
+            "standard": "Find centre and radius of |z − 2i| = 4. Show that |z − 2i| = |z − √3 − i| can be written as y = √3·x.",
+            "hard": "Find intersection of a circle and a perpendicular bisector locus. Find area of segment bounded by chord and arc."
+          },
+          "exam_question_style": "Exam 2 Q2 structure (10 marks): circle sketch (SKIP — transform to 'state centre and radius') → show locus is a line (2 marks) → find intersection points (2 marks) → ray equation (1 mark) → segment area (2 marks).",
+          "hint_for_ui": "For |z − a| = |z − b|: write z = x + iy, expand both sides, simplify. The locus is always the perpendicular bisector of the segment from a to b in the Argand plane. For segment area: use Area = ½r²(θ − sin θ) where θ is the central angle.",
+          "question_generation_notes": "The 'show locus is a line' sub-question should be reframed as 'find the Cartesian equation of the locus'. The area of circular segment (final sub-question) is the most valuable for drill — it tests both geometry and exact arithmetic in the form cπ + d."
+        }
+      ]
+    },
+
+    {
+      "code": "SM_AOS4",
+      "name": "Calculus",
+      "unit": "3 and 4",
+      "exam_relevance": "Both exams. Every year. The largest topic area by total marks.",
+      "topics": [
+        {
+          "code": "SM_AOS4_T1",
+          "name": "Differentiation techniques",
+          "vcaa_content": [
+            "Derivatives of inverse circular functions: arcsin, arccos, arctan",
+            "Second derivatives and their application (concavity, points of inflection)",
+            "Implicit differentiation",
+            "Related rates of change (chain rule applications)",
+            "Logarithmic differentiation"
+          ],
+          "key_formulas": [
+            "d/dx[arcsin(x)] = 1/√(1−x²)",
+            "d/dx[arccos(x)] = −1/√(1−x²)",
+            "d/dx[arctan(x)] = 1/(1+x²)",
+            "d/dx[arcsin(ax)] = a/√(1−a²x²)",
+            "d/dx[arctan(ax)] = a/(1+a²x²)",
+            "Implicit: differentiate both sides, isolate dy/dx",
+            "Product rule: d/dx[uv] = u·v' + v·u'",
+            "Quotient rule: d/dx[u/v] = (v·u' − u·v') / v²"
+          ],
+          "difficulty_tiers": {
+            "standard": "Find dy/dx for xe^(−2y) + y²eˣ = 8e⁴ at a given point. Find the tangent equation.",
+            "hard": "Related rates: dV/dt in terms of dr/dt. Implicit differentiation of complex expressions involving trig and exponential."
+          },
+          "exam_question_style": "Exam 1: implicit differentiation + tangent line (4 marks). The tangent question is consistent across years. Exam 1 kinematics questions often require v·dv/dx form of acceleration.",
+          "hint_for_ui": "For implicit differentiation: differentiate both sides with respect to x. Remember d/dx[f(y)] = f'(y)·(dy/dx) by the chain rule. Collect all dy/dx terms on one side and factorise.",
+          "question_generation_notes": "The implicit differentiation + tangent equation pattern (xe^(−2y) + y²eˣ = 8e⁴, find tangent at (4, −2)) appears every year in Exam 1. Generate variants by changing the structure of the implicit equation. Always specify a particular point for the tangent."
+        },
+        {
+          "code": "SM_AOS4_T2",
+          "name": "Integration techniques",
+          "vcaa_content": [
+            "Anti-differentiation of 1/√(a²−x²) and a/(a²+x²)",
+            "Integration by substitution u = g(x)",
+            "Trigonometric identities for anti-differentiation: sin²(ax) = ½(1−cos(2ax)), cos²(ax) = ½(1+cos(2ax))",
+            "Integration using partial fractions",
+            "Integration by parts",
+            "Numerical integration using technology (Exam 2 only)"
+          ],
+          "key_formulas": [
+            "∫1/√(a²−x²) dx = arcsin(x/a) + C",
+            "∫a/(a²+x²) dx = arctan(x/a) + C",
+            "∫sin²(ax) dx = x/2 − sin(2ax)/(4a) + C",
+            "∫cos²(ax) dx = x/2 + sin(2ax)/(4a) + C",
+            "Integration by parts: ∫u dv = uv − ∫v du",
+            "Volume of revolution about x-axis: V = π∫y² dx",
+            "Volume of revolution about y-axis: V = π∫x² dy",
+            "Arc length (parametric): L = ∫√((dx/dt)² + (dy/dt)²) dt",
+            "Surface area about x-axis: S = 2π∫y√(1+(dy/dx)²) dx"
+          ],
+          "difficulty_tiers": {
+            "standard": "Evaluate ∫arctan(x)/(1+x²) dx using substitution. Find volume V = π∫₁^√3 arctan(x)/(1+x²) dx.",
+            "hard": "Integration by parts for E(T) = ∫t·f(t) dt. Volume via substitution with limits requiring arctan evaluation."
+          },
+          "exam_question_style": "Exam 1: one integration question (3–4 marks) requiring substitution or integration by parts. Answer is always exact. Exam 2 Q4: arc length via parametric derivatives. Result often in form aπᵇ/c.",
+          "hint_for_ui": "For volume of revolution V = π∫y² dx: substitute y² first, then integrate. For substitution: identify u = g(x), compute du, rewrite the integrand entirely in terms of u before integrating.",
+          "question_generation_notes": "Volume of revolution with substitution is the cleanest question type — answer is always an exact fraction involving π. Generate the function (e.g. y = √(arctan(x)/(1+x²))) and limits. The substitution u = arctan(x) always works here. E(T) integration by parts appears in probability density questions."
+        },
+        {
+          "code": "SM_AOS4_T3",
+          "name": "Differential equations",
+          "vcaa_content": [
+            "Separation of variables for dy/dx = f(x)g(y)",
+            "Second order: d²y/dx² = f(x)",
+            "Direction (slope) fields",
+            "Euler's method (first order numerical approximation)",
+            "Logistic equation",
+            "Formulation from context (mixing problems, population, concentration)"
+          ],
+          "key_formulas": [
+            "Separation of variables: ∫1/g(y) dy = ∫f(x) dx",
+            "General solution: Q = A·e^(kt) + C",
+            "Specific form dQ/dt = (300−Q)/150: Q = 300 − 295e^(−t/150)",
+            "Euler's method: yₙ₊₁ = yₙ + h·f(xₙ, yₙ)",
+            "Domain: solution defined while denominator ≠ 0",
+            "Logistic: dP/dt = kP(1 − P/K)"
+          ],
+          "difficulty_tiers": {
+            "standard": "Apply Euler's method (2 steps, h=15). Solve dQ/dt = (300−Q)/150 with Q(0)=5. Find Q as t→∞.",
+            "hard": "Find domain of y(x) from a separable DE. Mixing problem where outflow rate changes mid-problem."
+          },
+          "exam_question_style": "Exam 2 Q3 (10 marks): explain concentration (1 mark, SKIP) → show DE (1 mark, transform to derive) → Euler 2-step (2 marks) → exact solution by separation (3 marks) → long-run value (1 mark) → time to reach threshold (1 mark) → new scenario after tap off (1 mark).",
+          "hint_for_ui": "For dQ/dt = (300−Q)/150: separate variables → ∫1/(300−Q) dQ = ∫1/150 dt → −ln|300−Q| = t/150 + C → Q = 300 − Ae^(−t/150). Apply initial condition Q(0) = 5 to find A = 295.",
+          "question_generation_notes": "The tank/mixing problem structure is highly stable. Vary: initial quantity, inflow concentration, tank volume, flow rate. The key equations are always the same structure. For Euler's method sub-question: always use exactly 2 steps so working is feasible by hand. Step size h=15 or h=20 works well."
+        },
+        {
+          "code": "SM_AOS4_T4",
+          "name": "Kinematics",
+          "vcaa_content": [
+            "Velocity-time graphs and rectilinear motion",
+            "Forms of acceleration: a = dv/dt = v·dv/dx = d/dx(½v²)",
+            "Anti-differentiation applied to rectilinear motion",
+            "Parametric vector position: r(t) as a function of time",
+            "Speed = |v(t)| = √((dx/dt)² + (dy/dt)²)",
+            "Arc length of parametric path"
+          ],
+          "key_formulas": [
+            "v(t) = dr/dt (velocity vector)",
+            "a(t) = d²r/dt² (acceleration vector)",
+            "Speed = |v| = √(ẋ² + ẏ²)",
+            "Arc length L = ∫ₐᵇ |v(t)| dt = ∫√(ẋ² + ẏ²) dt",
+            "For r(t) = (5cos(t) − 4cos(5t/2))i + (5sin(t) − 4sin(5t/2))j: speed = √(125 − 100cos(3t/2))"
+          ],
+          "difficulty_tiers": {
+            "standard": "Find velocity and acceleration at a given t. Find when speed is maximum or minimum. Find initial acceleration in terms of a constant k.",
+            "hard": "Show that speed simplifies to a given trigonometric expression using trig identities. Evaluate arc length numerically."
+          },
+          "exam_question_style": "Exam 1 Q3/Q6/Q9: rectilinear motion with v(t) = t/√(t²+k). Find x(t) by integration, find initial acceleration, find k from a geometric condition. Exam 2 Q4: parametric motion with 7 sub-questions — starting point, direction (SKIP), return time, show speed (transform to find speed), max speed, trace path (SKIP), arc length.",
+          "hint_for_ui": "For speed of a parametric curve: differentiate each component separately to get (dx/dt, dy/dt), then speed = √((dx/dt)² + (dy/dt)²). Expand and apply trig identities to simplify. The identity cos²A + sin²A = 1 is almost always the key step.",
+          "question_generation_notes": "Exam 1 style: v(t) = t/√(t²+k). Three sub-questions: (a) use integration to show x(t) = √(t²+k) − √k; (b) find initial acceleration 1/√k; (c) given s(t) = t and at t=T the second particle is 1m ahead, find k. All three are by-hand calculations without CAS. Exam 2 style: r(t) = (Rcos(t) − rcos(nt))i + (Rsin(t) − rsin(nt))j. Start at t=0, find return time (LCM of periods)."
+        }
+      ]
+    },
+
+    {
+      "code": "SM_AOS5",
+      "name": "Space and Measurement — Vectors",
+      "unit": "3 and 4",
+      "exam_relevance": "Both exams. Every year. 3–7 marks Exam 1, 10 marks Exam 2 Section B Q5.",
+      "topics": [
+        {
+          "code": "SM_AOS5_T1",
+          "name": "Vector operations",
+          "vcaa_content": [
+            "Dot product: a·b = |a||b|cos θ",
+            "Cross product: a×b (determinant form)",
+            "Scalar and vector resolutes",
+            "Parallel and perpendicular vectors",
+            "Unit vectors and magnitude"
+          ],
+          "key_formulas": [
+            "a·b = x₁x₂ + y₁y₂ + z₁z₂",
+            "cos θ = (a·b) / (|a||b|)",
+            "a⊥b ↔ a·b = 0",
+            "a∥b ↔ a×b = 0",
+            "|a×b| = |a||b|sin θ",
+            "Area of triangle = ½|a×b|",
+            "Scalar resolute of b onto a = (a·b)/|a|",
+            "Vector resolute of b onto a = ((a·b)/|a|²)a"
+          ],
+          "difficulty_tiers": {
+            "standard": "Find angle between two vectors. Find cross product. Find scalar resolute.",
+            "hard": "Find n for which acceleration ⊥ velocity at given t. Vectors a and b with |a·b| = |a×b| — find angle."
+          },
+          "exam_question_style": "Exam 1 Q4 (2024): angle between vectors (2 marks), cross product and area of triangle (2 marks). Exam 2 MCQ: |a·b| = |a×b| → angle = π/4.",
+          "hint_for_ui": "Dot product gives angle: cos θ = (a·b)/(|a||b|). If a·b = 0, the vectors are perpendicular. Cross product gives area: area of parallelogram = |a×b|, so area of triangle = ½|a×b|.",
+          "question_generation_notes": "Generate vectors with small integer components for by-hand computation. Standard pattern: give vectors u and v, ask for (a) angle between them, (b) cross product u×v, (c) area of triangle formed. All answers are exact, sympy-verifiable."
+        },
+        {
+          "code": "SM_AOS5_T2",
+          "name": "Lines and planes in 3D",
+          "vcaa_content": [
+            "Vector and parametric equations of a line",
+            "Intersection of two lines in 3D",
+            "Normal vector to a plane",
+            "Vector, parametric and Cartesian equations of a plane",
+            "Angle between two planes",
+            "Distance from a point to a plane",
+            "Distance between parallel planes",
+            "Line of intersection of two planes"
+          ],
+          "key_formulas": [
+            "Line: r(t) = r₀ + t·d",
+            "Plane Cartesian: ax + by + cz = d",
+            "Normal to plane: n = (a, b, c)",
+            "Angle between planes: cos θ = |n₁·n₂| / (|n₁||n₂|)",
+            "Distance from point P to plane ax+by+cz=d: |aP_x + bP_y + cP_z − d| / √(a²+b²+c²)",
+            "Distance between parallel planes: |d₁−d₂| / √(a²+b²+c²)",
+            "Direction of line of intersection of planes: n₁ × n₂",
+            "Shortest distance from P to line: |AP × d̂| where A is a point on the line"
+          ],
+          "difficulty_tiers": {
+            "standard": "Find intersection of two lines. Find equation of a plane through three points. Find distance from point (1,1,2) to plane Π₃.",
+            "hard": "Find all values of m for which distance between parallel planes equals a given value. Show two planes are parallel and find the distance."
+          },
+          "exam_question_style": "Exam 2 Q5 (10 marks): three-plane intersection (CAS, 1 mark) → direction vector of line of intersection via cross product (2 marks) → parametric equations of line (1 mark) → point-to-plane distance (2 marks) → show parallel (1 mark) → find m for given distance (3 marks). Exam 1 Q2/Q10: intersection of lines in 3D (3 marks), distance from point to line (3 marks).",
+          "hint_for_ui": "Direction of the line of intersection of two planes = cross product of their normal vectors. For distance from a point to a plane ax+by+cz=d: use the formula |ax₀+by₀+cz₀−d| / √(a²+b²+c²). For parallel planes: normals are proportional, distance between them = |d₁−d₂| / |n|.",
+          "question_generation_notes": "The distance from point to plane is the most drill-friendly sub-question — exact numeric answer, sympy-verifiable. Generate: specific plane equation, specific point, ask for exact distance. For MCQ style: give the angle between planes and ask which equation the parameter satisfies."
+        },
+        {
+          "code": "SM_AOS5_T3",
+          "name": "Particle motion and vector calculus",
+          "vcaa_content": [
+            "Position vector r(t), velocity v(t), acceleration a(t)",
+            "Collision conditions for two particles",
+            "Parametric paths: circles, ellipses, spirals",
+            "Differentiation and anti-differentiation of vector functions"
+          ],
+          "key_formulas": [
+            "Collision: r_P(t) = r_Q(t) at same t",
+            "Perpendicular velocities at collision: v_P · v_Q = 0",
+            "Equal accelerations: |a_P| = |a_Q|"
+          ],
+          "difficulty_tiers": {
+            "standard": "Show that c = −4 for collision at t=1. Find velocity vectors at collision.",
+            "hard": "Find a and b satisfying both perpendicular velocities AND equal magnitudes of acceleration."
+          },
+          "exam_question_style": "Exam 1 Q5 (2025): particle P and Q, show c = −4 (1 mark), find two values of a for perpendicular velocities (2 marks), find unique (a,b) for equal accelerations (1 mark). This is a 3-part cascading question.",
+          "hint_for_ui": "For collision at t=1: set r_P(1) = r_Q(1) and equate components. For perpendicular velocities: compute v_P(1) and v_Q(1), then set their dot product = 0.",
+          "question_generation_notes": "Generate: r_P(t) = (t³ + at²)i − j and r_Q(t) = (b+2t)i + (2t² + ct + t)j. Ask (a) show c = given value, (b) find two values of a for ⊥ velocities, (c) find unique solution using equal accelerations. Cascading structure — later parts depend on earlier. For drill: can present each part independently with the given values from previous parts."
+        }
+      ]
+    },
+
+    {
+      "code": "SM_AOS6",
+      "name": "Data Analysis, Probability and Statistics",
+      "unit": "4",
+      "exam_relevance": "Exam 1 (pdf/CLT) and Exam 2. Every year. 4–5 marks Exam 1, 10 marks Exam 2 Section B Q6.",
+      "topics": [
+        {
+          "code": "SM_AOS6_T1",
+          "name": "Linear combinations of random variables",
+          "vcaa_content": [
+            "E(aX + b) = aE(X) + b",
+            "Var(aX + b) = a²Var(X)",
+            "E(a₁X₁ + a₂X₂ + ... + aₙXₙ) = Σaᵢμᵢ",
+            "Var(a₁X₁ + ... + aₙXₙ) = Σaᵢ²σᵢ² (independent)",
+            "Linear combination of independent normals is normal"
+          ],
+          "key_formulas": [
+            "X ~ N(μ, σ²) → aX+b ~ N(aμ+b, a²σ²)",
+            "X₁+X₂ ~ N(μ₁+μ₂, σ₁²+σ₂²) if independent",
+            "P(Z > z) = 1 − Φ(z)"
+          ],
+          "difficulty_tiers": {
+            "standard": "P ~ N(−2, 4), Q ~ N(3, 9), R ~ N(5, 36): find Pr(3P + 2Q − R > 25) as Pr(Z > k).",
+            "hard": "Find the distribution of aX + bY where a, b are non-trivial and conclude whether a specific probability is equivalent to a given normal probability."
+          },
+          "exam_question_style": "Exam 2 MCQ Q20 style: given three independent normal RVs, identify which Pr(Z > z) expression equals a given probability.",
+          "hint_for_ui": "For aX + bY: mean = aμ_X + bμ_Y, variance = a²σ_X² + b²σ_Y² (if independent). The combined variable is normally distributed if X and Y are both normal. Standardise: Z = (W − mean_W) / √var_W.",
+          "question_generation_notes": "MCQ format works well here. Generate three normal RVs with different means and variances, form a linear combination, and ask which Pr(Z > z) expression is equivalent. Four options should differ in the z-value calculation."
+        },
+        {
+          "code": "SM_AOS6_T2",
+          "name": "Sampling distribution of the mean",
+          "vcaa_content": [
+            "X̄ as a random variable",
+            "E(X̄) = μ",
+            "SD(X̄) = σ/√n (standard error)",
+            "X̄ ~ N(μ, σ²/n) approximately for large n (CLT)"
+          ],
+          "key_formulas": [
+            "SE = σ/√n",
+            "Z = (X̄ − μ) / (σ/√n)",
+            "Pr(X̄ > x) using Z table"
+          ],
+          "difficulty_tiers": {
+            "standard": "Given X ~ N(1000, 80²), find E(X̄) and SD(X̄) for n=25. Find Pr(X̄ > 970).",
+            "hard": "Given Pr(Z < 1) = 0.84 only, find Pr(0.44 < X̄ < 0.5) without a full Z table (Exam 1 Q4b style)."
+          },
+          "exam_question_style": "Exam 1 Q4b (2025): given σ = 0.3 and Pr(Z < 1) = 0.84, find probability that X̄ is between two values. Exam 2 Q6a: write mean and SD of sampling distribution, compute probability to 4dp.",
+          "hint_for_ui": "The sampling distribution of X̄ has mean = μ (same as population) and standard deviation = σ/√n (smaller by factor √n). Standardise: Z = (X̄ − μ) / (σ/√n) and use the standard normal table.",
+          "question_generation_notes": "Exam 1 style: provide σ and a specific Pr(Z < k) = p, then ask for a probability using only that value. The student must recognise the Z score that matches. Exam 2 style: full 4dp calculation using CAS."
+        },
+        {
+          "code": "SM_AOS6_T3",
+          "name": "Confidence intervals",
+          "vcaa_content": [
+            "Construction of CI: (x̄ − z·σ/√n, x̄ + z·σ/√n)",
+            "Interpretation of CI",
+            "Expected number of CIs containing μ",
+            "Minimum sample size for given margin of error"
+          ],
+          "key_formulas": [
+            "95% CI: x̄ ± 1.96·σ/√n",
+            "99% CI: x̄ ± 2.576·σ/√n",
+            "Margin of error E: n ≥ (z·σ/E)²",
+            "Expected count containing μ: N × confidence level"
+          ],
+          "difficulty_tiers": {
+            "standard": "Find 95% CI for mean given x̄=750, σ=5, n=30. Find minimum n for E=1mL at 95% level.",
+            "hard": "Interpret: of 300 CIs computed, how many expected to contain true mean? Why might a CI not contain μ even at 95%?"
+          },
+          "exam_question_style": "Exam 2 Q6b/c/d (2025): CI to 1dp, expected count (285 = 300×0.95), minimum n (97 = ⌈(1.96×5/1)²⌉). All are single-mark A questions.",
+          "hint_for_ui": "For minimum sample size: rearrange E = z·σ/√n to get n ≥ (z·σ/E)². Always round UP to the nearest integer — rounding down would make the margin of error too large.",
+          "question_generation_notes": "These are the three most drill-friendly sub-questions in the entire curriculum. Every answer is a deterministic formula. Generate: σ, n, x̄, confidence level, desired margin. Ask all three. Perfect for rapid self-assessment."
+        },
+        {
+          "code": "SM_AOS6_T4",
+          "name": "Hypothesis testing",
+          "vcaa_content": [
+            "Null hypothesis H₀ and alternative hypothesis H₁",
+            "1-tail and 2-tail tests",
+            "Level of significance α and p-value",
+            "Decision rule: reject H₀ if p < α",
+            "Critical value",
+            "Type I error (α) and Type II error (β)",
+            "Power = 1 − β"
+          ],
+          "key_formulas": [
+            "Test statistic: Z = (x̄ − μ₀) / (σ/√n)",
+            "p-value: P(Z < z_obs) for lower tail, P(Z > z_obs) for upper tail",
+            "Critical value (lower tail, 1%): μ₀ − 2.326·σ/√n",
+            "Critical value (upper tail, 5%): μ₀ + 1.645·σ/√n",
+            "Type II error: P(fail to reject H₀ | H₁ true)",
+            "If μ_true < critical value (lower tail): β = Φ((critical value − μ_true) / SE)"
+          ],
+          "difficulty_tiers": {
+            "standard": "Given x̄=748, μ₀=750, σ=5, n=50, α=0.01: find H₀/H₁, compute p-value, state conclusion. Find critical value.",
+            "hard": "Given true mean μ=747.5 post-service, find P(Type II error) at 1% significance level."
+          },
+          "exam_question_style": "Exam 2 Q6e–h (2025): H₀/H₁ (1 mark) → p-value to 4dp (1 mark) → conclusion referencing p-value (1H) → critical value to 3dp (1 mark) → P(Type II error) to 3dp (1H). Four of the six sub-questions are single numeric answers.",
+          "hint_for_ui": "Decision rule: if p-value < α, reject H₀ and the claim is supported. If p-value ≥ α, fail to reject H₀. For a lower-tail test (H₁: μ < μ₀): p-value = Φ(z) where z = (x̄ − μ₀)/(σ/√n). For Type II error: find P(X̄ > critical value | μ = μ_true) using the new mean.",
+          "question_generation_notes": "The Type II error calculation (final sub-question) is conceptually the hardest but mechanically straightforward once the student has the critical value. Generate: μ₀, σ, n, α, x̄ (sample mean), μ_true (true mean after intervention). Ask all four sub-questions sequentially. P(Type II error) always depends on having the correct critical value from the previous sub-question — for drill, provide the critical value if this sub-question is asked in isolation."
+        },
+        {
+          "code": "SM_AOS6_T5",
+          "name": "Probability density functions (Exam 1 context)",
+          "vcaa_content": [
+            "Properties of a PDF: f(x) ≥ 0, ∫f(x)dx = 1",
+            "Expected value E(X) = ∫x·f(x) dx",
+            "Variance Var(X) = E(X²) − [E(X)]²",
+            "CLT applied to sample mean distribution"
+          ],
+          "key_formulas": [
+            "E(X) = ∫x·f(x) dx over the domain",
+            "Partial fractions: 1/((t+1)(2−t)) = A/(t+1) + B/(2−t)",
+            "∫1/(t+1) dt = ln|t+1|"
+          ],
+          "difficulty_tiers": {
+            "standard": "Show E(T) = ½ for a given PDF using integration and partial fractions (Exam 1 Q4a style). Use CLT result to find P(0.44 < X̄ < 0.5).",
+            "hard": "Verify that a given function is a valid PDF. Find both E(T) and Var(T)."
+          },
+          "exam_question_style": "Exam 1 Q4 (2025): 5 marks — show E(T) = ½ using partial fractions (3 marks) + CLT probability using given Pr(Z<1)=0.84 (2 marks). Technology-free so all integration is by hand.",
+          "hint_for_ui": "For E(T) = ∫t·f(t) dt: use partial fractions to split the integrand, then integrate term by term using ∫1/(t+a) dt = ln|t+a|. Remember to substitute limits carefully.",
+          "question_generation_notes": "The E(T) calculation via partial fractions is the most valuable Exam 1 integration question in statistics. Generate: a PDF of the form f(t) = k/((t+a)(b−t)) for 0 < t ≤ 1, where k is chosen so the PDF integrates to 1. Then ask: show E(T) = given value using integration."
+        }
+      ]
+    }
+
+  ],
+
+  "exam_structure": {
+    "exam_1": {
+      "description": "Technology-free, 1 hour, 40 marks",
+      "structure": "9–10 questions, each 3–6 marks, all extended response",
+      "topics_always_present": [
+        "SM_AOS1_T2 or SM_AOS1_T3 (direct proof or induction)",
+        "SM_AOS2_T1 (rational functions — sketch + turning point + asymptotes)",
+        "SM_AOS3_T1 or SM_AOS3_T2 (complex numbers)",
+        "SM_AOS4_T1 (implicit differentiation + tangent line)",
+        "SM_AOS4_T4 (kinematics — rectilinear or parametric)",
+        "SM_AOS5_T1 (dot product, cross product, angle)",
+        "SM_AOS5_T2 or SM_AOS5_T3 (3D lines/planes or particle collision)"
+      ],
+      "typical_question_pattern": "Multi-part with cascading dependencies. Each question tests one topic with 3–4 sub-parts (a, b, c). Marks are split 1M + 1A or 2M + 1A. All answers exact — no decimal approximations except where specified."
+    },
+    "exam_2": {
+      "description": "CAS-permitted, 2 hours, 80 marks",
+      "section_a": "20 MCQ, 1 mark each, full topic breadth",
+      "section_b": {
+        "description": "6 questions × 10 marks = 60 marks",
+        "frozen_structure": {
+          "Q1": "Rational functions family — SM_AOS2_T1",
+          "Q2": "Complex loci — SM_AOS3_T2",
+          "Q3": "Applied differential equation (mixing/tank) — SM_AOS4_T3",
+          "Q4": "Parametric motion and arc length — SM_AOS4_T4 + SM_AOS5_T3",
+          "Q5": "3D vectors and planes — SM_AOS5_T2",
+          "Q6": "Statistics chain — SM_AOS6_T2 + SM_AOS6_T3 + SM_AOS6_T4"
+        }
+      }
+    }
+  },
+
+  "question_generation_rules": {
+    "general": [
+      "Never use 'show that' phrasing — always use 'find', 'prove', 'determine', or 'calculate'",
+      "Never ask for a sketch — decompose into: 'find the equation of the asymptote', 'find the coordinates of the turning point', 'find the coordinates of the point of inflection to 1dp'",
+      "Never ask the student to draw a direction arrow — replace with 'find the velocity vector at point (x,y)' or 'state whether motion is clockwise or anticlockwise, and explain'",
+      "Exact answers required unless explicitly stated otherwise (e.g. 'correct to 2 decimal places')",
+      "For Exam 1 style: numbers must be workable by hand — small integers, simple fractions, values that produce exact π expressions",
+      "For Exam 2 style: numbers can be messier since CAS is available"
+    ],
+    "difficulty_labels": {
+      "standard": "Mirrors the first 2–3 sub-questions of an Exam 1 question or an Exam 2 Section A MCQ",
+      "hard": "Mirrors the final sub-question of an Exam 1 question or the 3-mark sub-questions in Exam 2 Section B"
+    },
+    "hint_structure": {
+      "curriculum_tag": "The VCAA area of study and topic code this question tests",
+      "key_knowledge": "One sentence: what concept or formula is being assessed",
+      "strategy_hint": "One sentence: how to start the problem — the first step only",
+      "formula_reference": "The key formula from this curriculum file, shown verbatim"
+    }
+  }
+}
