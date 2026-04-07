@@ -1,0 +1,24 @@
+name: Keep Render Alive
+
+on:
+  schedule:
+    # Every 5 minutes — the minimum GitHub allows.
+    # GitHub Actions can run a few minutes late in practice, so using
+    # the minimum interval gives the best chance of staying within
+    # Render's 15-min inactivity spindown window.
+    - cron: "*/5 * * * *"
+  workflow_dispatch: # allow manual trigger from GitHub UI
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping health endpoint
+        # --max-time 60: wait up to 60s for cold-start response
+        # --fail: exit non-zero on HTTP 4xx/5xx so the job shows red
+        # --silent: suppress progress output
+        # --show-error: but still show errors if any
+        run: |
+          curl --max-time 60 --fail --silent --show-error \
+            https://gensheet-vce.onrender.com
+          echo "Response received — service is alive."
