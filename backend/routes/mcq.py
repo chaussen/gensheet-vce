@@ -1,7 +1,9 @@
+import logging
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from backend.services.mcq_engine import generate_mcq, submit_mcq
 
+logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/mcq")
 
 
@@ -26,6 +28,7 @@ async def generate(req: GenerateRequest):
     except HTTPException:
         raise
     except Exception as e:
+        logger.error("Unhandled error in /api/mcq/generate: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="generation_failed")
 
 

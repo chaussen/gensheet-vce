@@ -1,15 +1,30 @@
 import json
+import logging
 import os
+import pathlib
 import uuid
 import re
 import anthropic
 
-# Load curriculum once at module level
-with open("curriculum/gensheet_vce_curriculum.json") as f:
-    CURRICULUM = json.load(f)
+logger = logging.getLogger(__name__)
+
+# Load curriculum once at module level — path is relative to this file, not cwd
+_CURRICULUM_PATH = pathlib.Path(__file__).parent.parent.parent / "curriculum" / "gensheet_vce_curriculum.json"
+try:
+    with open(_CURRICULUM_PATH) as f:
+        CURRICULUM = json.load(f)
+    logger.info("Loaded curriculum from %s", _CURRICULUM_PATH)
+except Exception as e:
+    logger.critical("Failed to load curriculum from %s: %s", _CURRICULUM_PATH, e)
+    raise
 
 # Use AsyncAnthropic for non-blocking calls
-client = anthropic.AsyncAnthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+try:
+    client = anthropic.AsyncAnthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+    logger.info("Anthropic client initialised (extended)")
+except KeyError:
+    logger.critical("ANTHROPIC_API_KEY not set — backend cannot start")
+    raise
 
 _extended_sessions: dict[str, dict] = {}
 
@@ -159,6 +174,7 @@ QUESTION GENERATION NOTES:
     data = None
     for attempt in range(3):
         try:
+            logger.info("Extended generate attempt %d/%d — topic=%s difficulty=%s model=%s", attempt + 1, 3, topic_code, difficulty, model)
             message = await client.messages.create(
                 model=model,
                 max_tokens=4000,
@@ -172,16 +188,19 @@ QUESTION GENERATION NOTES:
             data = parse_json(raw)
             err = _validate_extended_data(data)
             if err:
-                print(f"Extended attempt {attempt + 1} invalid: {err}")
+                logger.warning("Extended attempt %d invalid: %s", attempt + 1, err)
+                if raw:
+                    logger.debug("Raw response (first 500): %s", raw[:500])
                 data = None
                 continue
             break
         except Exception as e:
-            print(f"Extended generation attempt {attempt + 1} failed: {e}")
+            logger.error("Extended generation attempt %d failed: %s", attempt + 1, e, exc_info=True)
             if raw:
-                print(f"Raw response (truncated): {raw[:500]}...")
+                logger.debug("Raw response (first 500): %s", raw[:500])
 
     if data is None:
+        logger.error("Extended generation failed after 3 attempts — topic=%s difficulty=%s", topic_code, difficulty)
         raise ValueError("generation_failed")
 
     session_id = str(uuid.uuid4())[:8]

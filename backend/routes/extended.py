@@ -1,7 +1,9 @@
+import logging
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from backend.services.extended_engine import generate_extended, get_solution
 
+logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/extended")
 
 
@@ -24,6 +26,7 @@ async def generate(req: GenerateRequest):
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
+        logger.error("Unhandled error in /api/extended/generate: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="generation_failed")
 
 
