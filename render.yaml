@@ -2,10 +2,12 @@ services:
   - type: web
     name: gensheet-vce
     env: python
-    buildCommand: |
-      pip install -r requirements.txt
-      cd frontend && npm install && npm run build
+    buildCommand: ./build.sh
     startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: ANTHROPIC_API_KEY
         sync: false
+      - key: MCQ_MODEL
+        value: claude-haiku-4-5-20251001
+      - key: EXTENDED_MODEL
+        value: claude-haiku-4-5-20251001
