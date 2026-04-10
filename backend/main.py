@@ -9,13 +9,28 @@ logging.basicConfig(
     datefmt="%H:%M:%S",
 )
 
-from fastapi import FastAPI
+from datetime import datetime, timezone
+from fastapi import FastAPI, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from backend.routes.extended import router as extended_router
 from backend.routes.mcq import router as mcq_router
 
 app = FastAPI(title="GenSheet VCE")
+
+@app.head("/api/health", include_in_schema=False)
+async def health_head():
+    """Explicit HEAD handler for UptimeRobot (free tier only supports HEAD)."""
+    return Response(status_code=200)
+
+
+@app.get("/api/health")
+async def health():
+    """Keep-alive endpoint — pinged by UptimeRobot every 14 min in production."""
+    return {
+        "status": "ok",
+        "ts": datetime.now(timezone.utc).isoformat(),
+    }
 
 app.include_router(extended_router)
 app.include_router(mcq_router)

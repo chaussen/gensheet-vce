@@ -70,8 +70,17 @@ async def test_extended_generation_parsing():
       "question_latex": "Consider $f(x) = x^2$. Find $f'(2)$.",
       "curriculum_tag": "Derivatives",
       "strategy_hint": "Use power rule.",
-      "formula_reference": "$\\\\frac{d}{dx}x^n = nx^{n-1}$",
+      "formula_reference": "$$\\\\frac{d}{dx}x^n = nx^{n-1}$$",
       "worked_solution_latex": "Solution: $f'(x) = 2x$, so $f'(2) = 4$."
+    },
+    {
+      "label": "b",
+      "marks": 2,
+      "question_latex": "Find $f''(x)$.",
+      "curriculum_tag": "Derivatives",
+      "strategy_hint": "Differentiate again.",
+      "formula_reference": "$$\\\\frac{d}{dx}ax = a$$",
+      "worked_solution_latex": "Solution: $f''(x) = 2$."
     }
   ]
 }
@@ -86,7 +95,7 @@ async def test_extended_generation_parsing():
         result = await generate_extended(topic_code, "standard")
         
         assert "session_id" in result
-        assert len(result["questions"][0]["parts"]) == 1
+        assert len(result["questions"][0]["parts"]) == 2
         
         part = result["questions"][0]["parts"][0]
         assert "$f(x) = x^2$" in part["question_latex"]
