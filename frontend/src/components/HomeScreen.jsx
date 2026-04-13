@@ -47,6 +47,10 @@ export default function HomeScreen({ onExtendedStart, onMcqStart }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ topic_code: extTopic, difficulty }),
       })
+      if (res.status === 429) {
+        setExtError("You've reached today's limit of 3 free sessions. Come back tomorrow!")
+        return
+      }
       if (!res.ok) throw new Error('generation_failed')
       const data = await res.json()
       onExtendedStart(data)
@@ -66,6 +70,10 @@ export default function HomeScreen({ onExtendedStart, onMcqStart }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ topic_code: mcqTopic }),
       })
+      if (res.status === 429) {
+        setMcqError("You've reached today's limit of 3 free sessions. Come back tomorrow!")
+        return
+      }
       if (!res.ok) throw new Error('generation_failed')
       const data = await res.json()
       onMcqStart(data)
@@ -173,8 +181,8 @@ export default function HomeScreen({ onExtendedStart, onMcqStart }) {
           </div>
         </div>
 
-        <p className="text-center text-slate-400 text-xs mt-10">
-          No login required. GenSheet VCE · Part of the GenSheet suite
+        <p className="text-center text-slate-400 text-xs mt-8">
+          Free for evaluation — up to 3 sessions per day. No login required.
         </p>
       </div>
     </div>

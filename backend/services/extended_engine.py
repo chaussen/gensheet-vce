@@ -5,6 +5,7 @@ import pathlib
 import uuid
 import re
 import anthropic
+from backend.services.session_limiter import check_and_increment, SessionLimitExceeded
 
 logger = logging.getLogger(__name__)
 
@@ -202,6 +203,8 @@ QUESTION GENERATION NOTES:
     if data is None:
         logger.error("Extended generation failed after 3 attempts — topic=%s difficulty=%s", topic_code, difficulty)
         raise ValueError("generation_failed")
+
+    check_and_increment()
 
     session_id = str(uuid.uuid4())[:8]
     sanitized = _sanitize_parts(data["parts"])

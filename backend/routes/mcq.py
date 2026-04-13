@@ -2,6 +2,7 @@ import logging
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from backend.services.mcq_engine import generate_mcq, submit_mcq
+from backend.services.session_limiter import SessionLimitExceeded
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/mcq")
@@ -23,6 +24,8 @@ async def generate(req: GenerateRequest):
         if "error" in result:
             raise HTTPException(status_code=500, detail="generation_failed")
         return result
+    except SessionLimitExceeded:
+        raise HTTPException(status_code=429, detail="session_limit_reached")
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except HTTPException:

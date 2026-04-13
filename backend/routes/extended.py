@@ -2,6 +2,7 @@ import logging
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from backend.services.extended_engine import generate_extended, get_solution
+from backend.services.session_limiter import SessionLimitExceeded
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/extended")
@@ -23,6 +24,8 @@ async def generate(req: GenerateRequest):
     try:
         result = await generate_extended(req.topic_code, req.difficulty)
         return result
+    except SessionLimitExceeded:
+        raise HTTPException(status_code=429, detail="session_limit_reached")
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
