@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Spinner from './Spinner.jsx'
+import { CONTACT_EMAIL } from '../config/contact.js'
 
 const EXTENDED_TOPICS = [
   { label: 'Implicit Differentiation', code: 'SM_AOS4_T1' },
@@ -90,6 +91,10 @@ export default function HomeScreen({ onExtendedStart, onMcqStart }) {
         <div className="mb-10 text-center">
           <h1 className="text-4xl font-semibold text-slate-800 tracking-tight mb-2">GenSheet VCE</h1>
           <p className="text-slate-500 text-lg">Specialist Mathematics exam practice · Year 12</p>
+          <p className="text-slate-400 text-xs mt-2">
+            Questions or feedback?{' '}
+            <a href={`mailto:${CONTACT_EMAIL}`} className="underline underline-offset-2 hover:text-slate-600">{CONTACT_EMAIL}</a>
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
